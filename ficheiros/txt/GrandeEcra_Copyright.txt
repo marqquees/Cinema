@@ -2,8 +2,8 @@
 |                            G R A N D E E C R A                             |
 +----------------------------------------------------------------------------+
 |                                                                            |
-|                             DESENVOLVIDO POR:                              |
-|                                Vitor Santos                                |
+|                             DESENVOLVIDO POR                               |
+|                              Daniel Marques                                |
 |                                                                            |
 |                     Software Developer - CESAE Digital                     |
 |                       Programacao Estruturada - Java                       |
