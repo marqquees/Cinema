@@ -16,12 +16,12 @@ public class Client {
             do {
                 System.out.println("\nMENU DO CLIENTE");
                 System.out.println("\n1. Novo registo.");
-                System.out.println("2. Consultar cartaz cinematografico.");
+                System.out.println("2. Consultar cartaz cinematográfico.");
                 System.out.println("3. Pesquisar filmes.");
                 System.out.println("4. Visualizar mapa de uma sala.");
                 System.out.println("5. Reservar bilhetes.");
                 System.out.println("6. Recomendar filmes.");
-                System.out.println("7. Quiz cinematografico.");
+                System.out.println("7. Quiz cinematográfico.");
                 System.out.println("0. Voltar.");
 
                 System.out.print("\nOpção: ");
@@ -35,7 +35,7 @@ public class Client {
                         viewMoviePosters();
                         break;
                     case 3:
-                        searchMovies();
+                        searchMovie();
                         break;
                     case 4:
                         viewRoomMap();
@@ -50,7 +50,7 @@ public class Client {
     }
 
     /**
-     * A função simular o registo de um novo cliente. Solicita o nome, contacto telefónico e o email.
+     * A função simular o registo de um novo cliente. Solicita o nome, contacto telefónico e o endereço eletrónico.
      * Apresentar a mensagem “Cliente inserido com sucesso” e os dados introduzidos.
      */
     public static void newCustomer() {
@@ -79,12 +79,12 @@ public class Client {
     }
 
     /**
-     * Esta funçõ solicita um género cinematográfico e lista os filmes correspondentes, apresentando o título,
+     * Esta função solicita um género cinematográfico e lista os filmes correspondentes, apresentando o título,
      * o realizador, o ano, a duração, a idade mínima e a classificação.
      * A pesquisa ignora a diferença entre maiúscula e minúscula.
-     * Se não for encontrado o filmes, informar ao utilizador.
+     * Se não for encontrado o filme, informar ao utilizador.
      */
-    public static void searchMovies() {
+    public static void searchMovie() {
         try {
             File file = new File("ficheiros/csv/GrandeEcra_Filmes.csv");
             Scanner scanner = new Scanner(file);
@@ -110,7 +110,6 @@ public class Client {
 
                     filmeEncontado = true;
                 }
-
             }
             if (!filmeEncontado)
                 System.out.println("O filme " + nameMovie + " não foi encontrado.");
@@ -132,13 +131,13 @@ public class Client {
 
         try {
             do {
-                System.out.println("\nVISUALIZAR MAPA DE UMA SALA");
+                System.out.println("\nVISUALIZAR O MAPA DE UMA SALA");
 
                 System.out.println("1. Sala Mar");
                 System.out.println("2. Sala Terra");
                 System.out.println("3. Sala Sol");
 
-                System.out.println("\nSelecione uma sala: ");
+                System.out.print("\nSelecione uma sala: ");
                 option = input.nextInt();
 
 
@@ -150,7 +149,6 @@ public class Client {
                         System.out.println("Opção inválida. Digite um valor inteiro entre 1 e 3.");
                         break;
                 }
-
             } while (option != 1 && option != 2 && option != 3);
         } catch (InputMismatchException | FileNotFoundException ex) {
             System.out.println("O tipo de dados inserido é inválido! Digite um número inteiro.");
