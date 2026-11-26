@@ -24,7 +24,7 @@ public class MainMenu {
 
                 switch (option) {
                     case 1:
-                        Admin.checkAdministrator();
+                        Admin.menuAdmin();
                         break;
                     case 2:
                         Client.menuCustomer();
