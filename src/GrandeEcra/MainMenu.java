@@ -1,14 +1,19 @@
+package GrandeEcra;
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Menu {
+import static GrandeEcra.Library.exit;
 
-    public static void menu() {
+public class MainMenu {
+
+    static void mainMenu() {
         Scanner input = new Scanner(System.in);
         int option;
 
         try {
             do {
-                System.out.println("GRANDE ECRÃ");
+                System.out.println("\nGRANDE ECRÃ");
                 System.out.println("\nGrandes histórias merecem um grande ecrã.");
                 System.out.println("\n1. ADMINISTRADOR");
                 System.out.println("2. CLIENTE");
@@ -19,31 +24,22 @@ public class Menu {
 
                 switch (option) {
                     case 1:
-                        clearScreen();
-                        Admin.menu();
+                        Admin.checkAdministrator();
                         break;
                     case 2:
-                        clearScreen();
-                        Client.menu();
+                        Client.menuCustomer();
+                        break;
+                    case 0:
+                        exit();
                         break;
                     default:
                         System.out.print("Opção inválida! Tente novamente.");
-                        clearScreen();
                         break;
                 }
-
             } while (option != 0);
 
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (InputMismatchException ex) {
+            System.out.println("O tipo de dados inserido é inválido! Digite um número inteiro.");
         }
-    }
-
-    /**
-     * A função limpa os dados visíveis no ecrã.
-     */
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 }
