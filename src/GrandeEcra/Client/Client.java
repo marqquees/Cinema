@@ -1,11 +1,11 @@
-package GrandeEcra;
+package GrandeEcra.Client;
+
+import GrandeEcra.GeneralLibrary;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import static GrandeEcra.Library.printFile;
 
 public class Client {
     public static void menuCustomer() {
@@ -75,7 +75,7 @@ public class Client {
      * A função imprime integralmente o conteúdo do Cartaz.
      */
     public static void viewMoviePosters() {
-        printFile("ficheiros/txt/GrandeEcra_Cartaz.txt");
+        GeneralLibrary.printFile("ficheiros/txt/GrandeEcra_Cartaz.txt");
     }
 
     /**
@@ -90,7 +90,7 @@ public class Client {
             Scanner scanner = new Scanner(file);
             Scanner input = new Scanner(System.in);
             String nameMovie;
-            boolean filmeEncontado = false;
+            boolean filmFound = false;
 
             System.out.println("\nCONSULTAR CARTAZ CINEMATOGRÁFICO");
             System.out.print("\nNome do filme: ");
@@ -108,22 +108,19 @@ public class Client {
                     System.out.println("Idade mínima: " + itensLine[6]);
                     System.out.println("Classificação: " + itensLine[7]);
 
-                    filmeEncontado = true;
+                    filmFound = true;
                 }
             }
-            if (!filmeEncontado)
+            if (!filmFound)
                 System.out.println("O filme " + nameMovie + " não foi encontrado.");
 
         } catch (FileNotFoundException ex) {
-            System.out.println("O respetivo ficheiro não foi encontado.");
+            System.out.println("O respetivo ficheiro não foi encontrado.");
         }
     }
 
     /**
-     * Permitir selecionar uma das três salas. Ler a matriz de ocupação do respetivo CSV e apresentar o mapa,
-     * identificando as filas por letras (A, B, C, …) e os lugares por números, a partir de 1.
-     * Usar O para lugares disponíveis e X para lugares ocupados.
-     * Apresentar ainda a lotação total, lugares livres, lugares ocupados e taxa de ocupação atual.
+     * Permitir selecionar uma das três salas. Lê o respetivo CSV e apresentar o mapa.
      */
     public static void viewRoomMap() {
         Scanner input = new Scanner(System.in);
@@ -133,48 +130,30 @@ public class Client {
             do {
                 System.out.println("\nVISUALIZAR O MAPA DE UMA SALA");
 
-                System.out.println("1. Sala Mar");
+                System.out.println("\n1. Sala Mar");
                 System.out.println("2. Sala Terra");
                 System.out.println("3. Sala Sol");
 
                 System.out.print("\nSelecione uma sala: ");
                 option = input.nextInt();
 
-
                 switch (option) {
                     case 1:
-                        roomMar();
+                        LibraryClient.room("ficheiros/csv/Sala_Mar.csv", "MAR");
+                        break;
+                    case 2:
+                        LibraryClient.room("ficheiros/csv/Sala_Terra.csv", "TERRA");
+                        break;
+                    case 3:
+                        LibraryClient.room("ficheiros/csv/Sala_Sol.csv", "SOL");
                         break;
                     default:
-                        System.out.println("Opção inválida. Digite um valor inteiro entre 1 e 3.");
+                        System.out.println("Opção inválida. Digite um número inteiro entre 1 e 3.");
                         break;
                 }
             } while (option != 1 && option != 2 && option != 3);
-        } catch (InputMismatchException | FileNotFoundException ex) {
+        } catch (InputMismatchException ex) {
             System.out.println("O tipo de dados inserido é inválido! Digite um número inteiro.");
         }
-    }
-
-    public static void roomMar() throws FileNotFoundException {
-        // SALA MAR
-        // ECRA
-        // =================
-        //   1 2 3 4 5 6 7 8
-        // A O O O X X O O O
-        // B O X X X O O O O
-        // C O O O O O O X X
-        // D O O X X X O O O
-        // E O O O O O O O O
-        // F X X O O O O O O
-        //O - Disponivel | X - Ocupado
-        //Lotacao: 48 | Disponiveis: 36 | Ocupados: 12
-        //Taxa de ocupacao: 25.00%
-
-        File file = new File("ficheiros/csv/Sala_Mar.csv");
-        Scanner scanner = new Scanner(file);
-
-        System.out.println("\nSALA MAR");
-        System.out.println("ECRA");
-        System.out.println("=================");
     }
 }
