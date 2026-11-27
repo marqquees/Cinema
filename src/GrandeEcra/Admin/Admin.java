@@ -1,4 +1,6 @@
-package GrandeEcra;
+package GrandeEcra.Admin;
+
+import GrandeEcra.Main;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +28,7 @@ public class Admin {
             } while (opcao != 0);
         } else {
             System.out.println("Senha inválida!");
-            MainMenu.mainMenu();
+            Main.MainMenu();
         }
     }
 
